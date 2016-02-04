@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CameraDemo.XamFormsUI.Pages.CustomGallery"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:CameraDemo.XamFormsUI.Behaviors;assembly=CameraDemo.XamFormsUI"
+             xmlns:core="clr-namespace:CameraDemo.Core;assembly=CameraDemo.Core"
+             xmlns:extensions="clr-namespace:CameraDemo.XamFormsUI.Extensions;assembly=CameraDemo.XamFormsUI"
+             xmlns:images="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Name="gallery"
+             Title="{Binding Title}"
+             BindingContext="{Binding Source={x:Static core:ViewModelLocator.Locator},
+                                      Path=CustomGallery}"
+             IsBusy="{Binding IsBusy}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center"
+                         IsVisible="{Binding IsBusy}"
+                         Orientation="Horizontal"
+                         Padding="10"
+                         Spacing="10">
+                <ActivityIndicator HorizontalOptions="Center"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}" />
+                <Label HorizontalOptions="Center"
+                       Text="Loading..."
+                       VerticalOptions="Center" />
+            </StackLayout>
+            <ListView IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      ItemsSource="{Binding Images}"
+                      RefreshCommand="{Binding GetItemsCommand}">
+                <ListView.Behaviors>
+                    <behaviors:ListViewBehavior CommandName="ShowImageCommand"
+                                                CommandNameContext="{extensions:RelativeContext gallery}"
+                                                EventName="ItemTapped" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

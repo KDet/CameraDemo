@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CameraDemo.XamFormsUI.Pages.MenuPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:CameraDemo.XamFormsUI.Behaviors;assembly=CameraDemo.XamFormsUI"
+             xmlns:core="clr-namespace:CameraDemo.Core;assembly=CameraDemo.Core"
+             xmlns:extensions="clr-namespace:CameraDemo.XamFormsUI.Extensions;assembly=CameraDemo.XamFormsUI"
+             x:Name="menuPage"
+             Title="{Binding Title}"
+             BackgroundColor="#333333"
+             BindingContext="{Binding Source={x:Static core:ViewModelLocator.Locator},
+                                      Path=Menu}"
+             IsBusy="{Binding IsBusy}">
+    <ListView BackgroundColor="Transparent"
+              Header="{Binding Title}"
+              VerticalOptions="FillAndExpand">
+        <ListView.Behaviors>
+            <behaviors:ListViewBehavior CommandName="DetailCommand"
+                                        CommandNameContext="{extensions:RelativeContext menuPage}"
+                                        EventName="ItemTapped" />
+        </ListView.Behaviors>
+        <ListView.HeaderTemplate>
+            <DataTemplate>
+                <Label FontSize="Large"
+                       Text="{Binding .}"
+                       TextColor="#AAAAAA"
+                       XAlign="Center" />
+            </DataTemplate>
+        </ListView.HeaderTemplate>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Title}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.ItemsSource>
+            <Binding Path="MenuItems" />
+        </ListView.ItemsSource>
+    </ListView>
+</ContentPage>

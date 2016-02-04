@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CameraDemo.XamFormsUI.Pages.GalleryPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:CameraDemo.Core;assembly=CameraDemo.Core"
+             Title="{Binding Title}"
+             BindingContext="{Binding Source={x:Static core:ViewModelLocator.Locator},
+                                      Path=Gallery}">
+
+    <Button Command="{Binding ShowGalleryCommand}"
+            HorizontalOptions="Center"
+            Text="{Binding Title}"
+            VerticalOptions="Center" />
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controls:ZoomImage Grid.Row="0"
+                            Aspect="AspectFill"
+                            DoubleTapToZoomEnabled="True"
+                            MaxZoom="2"
+                            MinZoom="0.5"
+                            ScrollEnabled="True"
+                            Source="{Binding SelectedImage}"
+                            ZoomEnabled="True" />
+
+        <Button Grid.Row="1"
+                Command="{Binding ShowGalleryCommand}"
+                Text="{Binding Title}" />
+    </Grid>-->
+</ContentPage>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application x:Class="CameraDemo.XamFormsUI.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--<Style x:Key="separatorLineStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Silver" />
+                <Setter Property="HeightRequest" Value="2" />
+            </Style>-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

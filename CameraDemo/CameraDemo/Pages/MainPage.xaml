@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage x:Class="CameraDemo.XamFormsUI.Pages.MainPage"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:core="clr-namespace:CameraDemo.Core;assembly=CameraDemo.Core"
+                  xmlns:pages="clr-namespace:CameraDemo.XamFormsUI.Pages;assembly=CameraDemo.XamFormsUI"
+                  Title="{Binding Title}"
+                  BindingContext="{Binding Source={x:Static core:ViewModelLocator.Locator},
+                                           Path=Main}"
+                  IsBusy="{Binding IsBusy}"
+                  MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <pages:MenuPage>
+            <pages:MenuPage.Padding>
+                <OnPlatform iOS="0, 20, 0, 0" x:TypeArguments="Thickness" />
+            </pages:MenuPage.Padding>
+        </pages:MenuPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

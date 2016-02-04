@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CameraDemo.XamFormsUI.Pages.ImagePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XFExtensions.Controls.Abstractions;assembly=XFExtensions.Controls.Abstractions"
+             xmlns:core="clr-namespace:CameraDemo.Core;assembly=CameraDemo.Core"
+             Title="{Binding Title}"
+             BindingContext="{Binding Source={x:Static core:ViewModelLocator.Locator},
+                                      Path=Media}"
+             IsBusy="{Binding IsBusy}">
+    <Grid>
+        <StackLayout HorizontalOptions="Center"
+                     IsVisible="{Binding IsBusy}"
+                     Orientation="Horizontal"
+                     Padding="10"
+                     Spacing="10">
+            <!--<ActivityIndicator BindingContext="{x:Reference zoomImage}"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}" />-->
+            <ActivityIndicator HorizontalOptions="Center"
+                               IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}" />
+            <Label HorizontalOptions="Center"
+                   Text="Loading..."
+                   VerticalOptions="Center" />
+        </StackLayout>
+        <controls:ZoomImage x:Name="zoomImage"
+                            Aspect="AspectFit"
+                            DoubleTapToZoomEnabled="True"
+                            IsLoading="{Binding IsBusy,
+                                                Mode=OneWayToSource}"
+                            MaxZoom="2"
+                            MinZoom="0.5"
+                            ScrollEnabled="True"
+                            Source="{Binding SelectedImage}"
+                            ZoomEnabled="True" />
+
+    </Grid>
+</ContentPage>
