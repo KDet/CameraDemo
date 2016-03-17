@@ -47,6 +47,12 @@ namespace CameraDemo.Core.ViewModel
             }
         }
 
+		/// <summary>
+		/// CHANGED
+		/// </summary>
+		/// <param name="mediaService"></param>
+		/// <param name="notificationService"></param>
+		/// <param name="detailService"></param>
         public GalleryViewModel(IMediaService mediaService,
                                 INotificationService notificationService,
                                 IDetailService detailService)
